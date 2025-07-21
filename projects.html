@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Silas Spencer</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;500;600;700&family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inconsolata', monospace;
+            background-color: #FFFBF5;
+            color: #333;
+        }
+        .content-box {
+            border: 1px dashed #d1d5db; /* gray-300 */
+            padding: 2rem;
+        }
+        .nav-link {
+            font-family: 'Inconsolata', sans-serif;
+            font-weight: 500;
+            color: #4b5563; /* gray-600 */
+            transition: color 0.2s;
+        }
+        .nav-link:hover {
+            color: #111827; /* gray-900 */
+        }
+        .bio-text {
+            font-family: 'Inconsolata', sans-serif;
+            font-size: 1.125rem; /* 18px */
+            line-height: 1.75;
+            color: #374151; /* gray-700 */
+        }
+        .link {
+            color: #2563eb; /* blue-600 */
+            text-decoration: underline;
+        }
+        .link:hover {
+            color: #1d4ed8; /* blue-700 */
+        }
+        .icon-link {
+            color: #4b5563; /* gray-600 */
+            transition: color 0.2s;
+        }
+        .icon-link:hover {
+            color: #111827; /* gray-900 */
+        }
+        /* Styles for the fade-in animation */
+        .fade-in-element {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in-element.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+<div class="container mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-8 md:py-16">
+
+    <div id="header-placeholder"></div>
+
+    work in progress! - July 2025
+
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+            });
+    })
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- Fade-in animation logic ---
+        const elementsToAnimate = document.querySelectorAll('.fade-in-element');
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        elementsToAnimate.forEach(el => {
+            if (el) {
+                observer.observe(el);
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
